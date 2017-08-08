@@ -62,7 +62,7 @@ makeMotionMovie(asf, amc, xyz, skipNFrames = 3, nSkeletons = 10, sdExtraSkeleton
 ![Zombies!](zombies.gif)
 
 Animate two *different* skeletons simultaneously:
-```{r}
+```{r, eval = FALSE}
 asfFile <- system.file("extdata", "charleston.asf", package = "mocap")
 asf <- readASF(asfFile)
 amcFile1 <- system.file("extdata", "charleston1.amc", package = "mocap")
