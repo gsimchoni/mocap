@@ -62,7 +62,7 @@ makeMotionMovie <- function(asf, amc, xyz, movieType = "gif",
          call. = FALSE)
   }
   if (twoSkeletons) {
-    if (any(is.null(asf2), is.null(amc2), is.null(xyz2))) {
+    if (any(is.null(amc2), is.null(xyz2))) {
       stop("twoSkeletons = TRUE yet one of the 2nd skeleton parameters is NULL.")
     }
     xyzList <- list(xyz, xyz2)

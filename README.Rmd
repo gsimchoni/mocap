@@ -48,6 +48,7 @@ makeMotionMovie(asf, amc, xyz, skipNFrames = 4)
 
 ![Lambada!](lambada.gif)
 
+
 Animate a few skeletons from a single one:
 ```{r, eval = FALSE}
 asfFilePath <- system.file("extdata", "zombie.asf", package = "mocap")
@@ -59,5 +60,21 @@ makeMotionMovie(asf, amc, xyz, skipNFrames = 3, nSkeletons = 10, sdExtraSkeleton
 ```
 
 ![Zombies!](zombies.gif)
+
+Animate two *different* skeletons simultaneously:
+```{r}
+asfFile <- system.file("extdata", "charleston.asf", package = "mocap")
+asf <- readASF(asfFile)
+amcFile1 <- system.file("extdata", "charleston1.amc", package = "mocap")
+amc1 <- readAMC(amcFile1, asf)
+amcFile2 <- system.file("extdata", "charleston2.amc", package = "mocap")
+amc2 <- readAMC(amcFile2, asf)
+xyz1 <- getMotionData(asf, amc1)
+xyz2 <- getMotionData(asf, amc2)
+makeMotionMovie(asf, amc1, xyz1, skipNFrames = 2,
+                twoSkeletons = TRUE, amc2 = amc2, xyz2 = xyz2, viewAngle = 20)
+```
+
+![Charleston!](charleston.gif)
 
 More information and examples [here](http://giorasimchoni.com).
