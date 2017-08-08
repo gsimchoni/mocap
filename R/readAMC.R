@@ -1,15 +1,34 @@
 #' Read and Parse a AMC file
 #'
-#' This function allows you to...
+#' This function reads in and parses a AMC Motion Capture file and returns
+#' several useful objects
 #' @param amcFilePath path to a .asf file
 #' @param asf ASF object read with \code{readASF()}
-#' @param in2cm desc
-#' @export
+#' @param in2cm a boolean indicating whether to convert inches to centimeters, defaults to TRUE
+#' 
+#' @return a list containing:
+#' \item{D}{a matrix of dimensions bones x frames containing raw (or converted
+#' to cm) AMC values}
+#' \item{degrees}{a named list containing for each bone the nFrames x 3 matrix
+#' with AMC Euler Angles}
+#' \item{nFrames}{no. of frames found in the AMC file}
+#' \item{skeleton}{a data frame containing the details for each bone, e.g. DOF,
+#' length, direction, angle}
+#' 
+#' @note 
+#' Only ASF/AMC files from the CMU Graphics Lab Motion Capture Database have been tested.
+#' 
+#' @references
+#' \url{http://giorasimchoni.com/}
+#' \url{http://mocap.cs.cmu.edu/}
+#' 
 #' @examples
 #' asfFilePath <- system.file("extdata", "lambada.asf", package = "mocap")
 #' asf <- readASF(asfFilePath)
 #' amcFilePath <- system.file("extdata", "lambada.amc", package = "mocap")
 #' amc <- readAMC(amcFilePath, asf)
+#' 
+#' @export
 readAMC <- function(amcFilePath, asf, in2cm = TRUE) {
   res <- amc2Matrix(amcFilePath)
   

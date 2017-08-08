@@ -1,15 +1,23 @@
-#' Plot a single frame of XYZ location
+#' Plot a single frame of 3D motion data
 #'
-#' This function allows you to...
-#' @param xyz desc
-#' @param childs desc
-#' @param frame desc
-#' @param lims desc
-#' @param rotateAngle desc
-#' @param viewAngle desc
-#' @param mainTitle desc
-#' @param ... desc
-#' @export
+#' Plot a single 3D frame of the \code{xyz} data obtained with \code{getMotionData()}.
+#' The plot used is a \code{scatterplot3d} plot.
+#' @param xyz the \code{xyz} list object obtained with \code{getMotionData()}
+#' @param childs the \code{childs} list of a \code{amc} object obtained with \code{readAMC()}
+#' @param frame a frame number (currently unvalidated!)
+#' @param lims a list of limits for the x, y, z axes.
+#' Format: list(limX = c(min, max), limY = c(min, max), limZ = c(min, max))
+#' @param rotateAngle angle in degrees to rotate the entire skeleton around the
+#' Y (upwards) axis, defaults to 0
+#' @param viewAngle the \code{scatterplot3d}'s \code{angle} parameter, defaults to 40
+#' @param mainTitle the \code{scatterplot3d}'s \code{main} title parameter,
+#' defaults o frame number
+#' @param ... additional arguments to the \code{scatterplot3d} function
+#' 
+#' @references
+#' \url{http://giorasimchoni.com/}
+#' \url{http://mocap.cs.cmu.edu/}
+#' 
 #' @examples
 #' asfFilePath <- system.file("extdata", "lambada.asf", package = "mocap")
 #' asf <- readASF(asfFilePath)
@@ -24,6 +32,8 @@
 #'   max(unlist(lapply(xyz, function(x) max(x[, 3])))))
 #' lims <- list(limX = limX, limY = limY, limZ = limZ)
 #' plotMotionSingleFrame(xyz, amc$childs, 1)
+#' 
+#' @export
 plotMotionSingleFrame <- function(xyz, childs, frame, lims,
                                   rotateAngle = 0,
                                   viewAngle = 40,

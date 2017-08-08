@@ -1,12 +1,34 @@
 #' Read and Parse a AFS file
 #'
-#' This function allows you to...
+#' This function reads in and parses a AFS Motion Capture file and returns
+#' several useful objects
 #' @param asfFilePath path to a .asf file
-#' @param in2cm desc
-#' @export
+#' @param in2cm a boolean indicating whether to convert inches to centimeters,
+#' defaults to TRUE
+#' 
+#' @return a list containing:
+#' \item{skeleton}{a data frame containing the details for each bone, e.g. DOF,
+#' length, direction, angle - DO NOT USE, use the one returned from \code{readAMC}}
+#' \item{childs}{a named list containing a vector of "children" bones for each
+#' "parent" bone}
+#' \item{CMatList}{a named list with the C and Cinv angle-axis matrices for each bone}
+#' \item{len}{the length parameter in the ASF file, scaling factor all lengths,
+#' in CMU files always 0.45}
+#' \item{angleType}{the angle parameter in the ASF file, "deg" or "rad",
+#' in CMU files always "deg"}
+#' 
+#' @note 
+#' Only ASF/AMC files from the CMU Graphics Lab Motion Capture Database have been tested.
+#' 
+#' @references
+#' \url{http://giorasimchoni.com/}
+#' \url{http://mocap.cs.cmu.edu/}
+#' 
 #' @examples
 #' asfFilePath <- system.file("extdata", "lambada.asf", package = "mocap")
 #' asf <- readASF(asfFilePath)
+#' 
+#' @export
 readASF <- function(asfFilePath, in2cm = TRUE) {
   lines <- readLines(asfFilePath)
   

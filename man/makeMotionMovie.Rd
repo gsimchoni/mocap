@@ -9,30 +9,35 @@ makeMotionMovie(asf, amc, xyz, type = "gif", framesPerSecond = 120,
   rotateMotion = FALSE, viewAngle = 40, ...)
 }
 \arguments{
-\item{asf}{desc}
+\item{asf}{ASF object read with \code{readASF()}}
 
-\item{amc}{desc}
+\item{amc}{AMC object read with \code{readAMC()}}
 
-\item{xyz}{desc}
+\item{xyz}{the \code{xyz} list object obtained with \code{getMotionData()}}
 
-\item{type}{desc}
+\item{type}{type of video, "gif" or "mp4", defaults to "gif"}
 
-\item{framesPerSecond}{desc}
+\item{framesPerSecond}{no. of frames per second, defaults to 120}
 
-\item{skipNFrames}{desc}
+\item{skipNFrames}{size of frames step to skip, defaults to 1, i.e. no skipping}
 
-\item{fileName}{desc}
+\item{fileName}{name for the output file, defaults to "motion"}
 
-\item{imgName}{desc}
+\item{imgName}{the \code{animation}'s \code{img.name} parameter, defaults to
+"motion"}
 
-\item{rotateMotion}{desc}
+\item{rotateMotion}{a boolean indicating whether to rotate the skeleton in
+motion, defaults to FALSE}
 
-\item{viewAngle}{desc}
+\item{viewAngle}{the \code{scatterplot3d}'s \code{angle} parameter, defaults to 40}
 
-\item{...}{desc}
+\item{...}{additional arguments to the \code{scatterplot3d} function}
 }
 \description{
-This function allows you to...
+Use the \code{animation} and \code{scatterplot3d} packages to output a gif
+or a mp4 movie out of the motion data extracted from the AFS/AMC files. For
+gifs need to install ImageMagick, for mp4s need ffmpeg, see the \code{animation}
+package for details.
 }
 \examples{
 asfFilePath <- system.file("extdata", "lambada.asf", package = "mocap")
@@ -41,4 +46,9 @@ amcFilePath <- system.file("extdata", "lambada.amc", package = "mocap")
 amc <- readAMC(amcFilePath, asf)
 xyz <- getXYZLocationData(asf, amc)
 makeMotionMovie(asf, amc, xyz, skipNFrames = 4)
+
+}
+\references{
+\url{http://giorasimchoni.com/}
+\url{http://mocap.cs.cmu.edu/}
 }

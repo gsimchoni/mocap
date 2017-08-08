@@ -2,7 +2,7 @@
 % Please edit documentation in R/getMotionData.R
 \name{getMotionData}
 \alias{getMotionData}
-\title{Get XYZ motion data from a pair of ASF/AMC files}
+\title{Get XYZ motion data from a pair of ASF/AMC objects}
 \usage{
 getMotionData(asf, amc, verbose = FALSE)
 }
@@ -11,10 +11,20 @@ getMotionData(asf, amc, verbose = FALSE)
 
 \item{amc}{AMC object read with \code{readAMC()}}
 
-\item{verbose}{desc}
+\item{verbose}{a boolean indicating whether or not to print no. of frames read, defaults to TRUE}
+}
+\value{
+\item{xyz}{a named list of 3D motion data matrices, one for each bone, see Details.}
 }
 \description{
-This function allows you to...
+This function will turn your \code{asf} and \code{amc} objects into a list of
+3D motion matrices, one for each bone.
+}
+\details{
+This function accepts a pair of \code{asf} and \code{amc} objects, loops
+through bones and frames to return the \code{xyz} list. Each element of this
+list represents the 3D (global) coordinates of motion for each bone. Thus
+each element of the list is a dimensions nFrames x 3
 }
 \examples{
 asfFilePath <- system.file("extdata", "lambada.asf", package = "mocap")
@@ -22,4 +32,9 @@ asf <- readASF(asfFilePath)
 amcFilePath <- system.file("extdata", "lambada.amc", package = "mocap")
 amc <- readAMC(amcFilePath, asf)
 xyz <- getMotionData(asf, amc)
+
+}
+\references{
+\url{http://giorasimchoni.com/}
+\url{http://mocap.cs.cmu.edu/}
 }

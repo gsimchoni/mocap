@@ -2,30 +2,34 @@
 % Please edit documentation in R/plotMotionSingleFrame.R
 \name{plotMotionSingleFrame}
 \alias{plotMotionSingleFrame}
-\title{Plot a single frame of XYZ location}
+\title{Plot a single frame of 3D motion data}
 \usage{
 plotMotionSingleFrame(xyz, childs, frame, lims, rotateAngle = 0,
   viewAngle = 40, mainTitle = frame, ...)
 }
 \arguments{
-\item{xyz}{desc}
+\item{xyz}{the \code{xyz} list object obtained with \code{getMotionData()}}
 
-\item{childs}{desc}
+\item{childs}{the \code{childs} list of a \code{amc} object obtained with \code{readAMC()}}
 
-\item{frame}{desc}
+\item{frame}{a frame number (currently unvalidated!)}
 
-\item{lims}{desc}
+\item{lims}{a list of limits for the x, y, z axes.
+Format: list(limX = c(min, max), limY = c(min, max), limZ = c(min, max))}
 
-\item{rotateAngle}{desc}
+\item{rotateAngle}{angle in degrees to rotate the entire skeleton around the
+Y (upwards) axis, defaults to 0}
 
-\item{viewAngle}{desc}
+\item{viewAngle}{the \code{scatterplot3d}'s \code{angle} parameter, defaults to 40}
 
-\item{mainTitle}{desc}
+\item{mainTitle}{the \code{scatterplot3d}'s \code{main} title parameter,
+defaults o frame number}
 
-\item{...}{desc}
+\item{...}{additional arguments to the \code{scatterplot3d} function}
 }
 \description{
-This function allows you to...
+Plot a single 3D frame of the \code{xyz} data obtained with \code{getMotionData()}.
+The plot used is a \code{scatterplot3d} plot.
 }
 \examples{
 asfFilePath <- system.file("extdata", "lambada.asf", package = "mocap")
@@ -41,4 +45,9 @@ limZ <- c(min(unlist(lapply(xyz, function(x) min(x[, 3])))),
   max(unlist(lapply(xyz, function(x) max(x[, 3])))))
 lims <- list(limX = limX, limY = limY, limZ = limZ)
 plotMotionSingleFrame(xyz, amc$childs, 1)
+
+}
+\references{
+\url{http://giorasimchoni.com/}
+\url{http://mocap.cs.cmu.edu/}
 }
