@@ -1,0 +1,16 @@
+Package: mocap
+Title: R interface to parsing and plotting Motion Capture files from the CMU Graphics Lab Database
+Version: 0.0.0.9000
+Date: 2017-08-17
+Authors@R: person("Giora", "Simchoni", email = "gsimchoni@gmail.com", role = c("aut", "cre"))
+Description: This package holds functions to easily parse motion capture ("mocap") files.
+	Currently only ASF/AMC files are supported, and only those found in the
+	Carnegie Mellon University Graphics Lab Motion Capture Database have been tested
+URL: http://github.com/gsimchoni/mocap, http://giorasimchoni.com, http://mocap.cs.cmu.edu/
+Depends: R (>= 3.3.3)
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Imports: scatterplot3d
+Suggests: animation
