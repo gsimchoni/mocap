@@ -4,13 +4,14 @@
 \alias{plotMotionSingleFrame}
 \title{Plot a single frame of 3D motion data}
 \usage{
-plotMotionSingleFrame(xyz, childs, frame, lims, rotateAngle = 0,
+plotMotionSingleFrame(xyzList, childs, frame, lims, rotateAngle = 0,
   viewAngle = 40, mainTitle = frame, ...)
 }
 \arguments{
-\item{xyz}{the \code{xyz} list object obtained with \code{getMotionData()}}
+\item{xyzList}{a list of \code{xyz} objects such as obtained with \code{getMotionData()}
+Each \code{xyz} object depicts the motion of a single skeleton}
 
-\item{childs}{the \code{childs} list of a \code{amc} object obtained with \code{readAMC()}}
+\item{childs}{the \code{childs} list of a \code{asf} object obtained with \code{readASF()}}
 
 \item{frame}{a frame number (currently unvalidated!)}
 
@@ -44,10 +45,11 @@ limY <- c(min(unlist(lapply(xyz, function(x) min(x[, 2])))),
 limZ <- c(min(unlist(lapply(xyz, function(x) min(x[, 3])))),
   max(unlist(lapply(xyz, function(x) max(x[, 3])))))
 lims <- list(limX = limX, limY = limY, limZ = limZ)
-plotMotionSingleFrame(xyz, amc$childs, 1)
+plotMotionSingleFrame(list(xyz), asf$childs, 1, lims)
 
 }
 \references{
-\url{http://giorasimchoni.com/}
-\url{http://mocap.cs.cmu.edu/}
+A blog post describing the package with more examples: \url{http://giorasimchoni.com/}
+
+The CMU Graphics Lab Motion Capture Database: \url{http://mocap.cs.cmu.edu/}
 }

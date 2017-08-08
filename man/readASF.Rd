@@ -37,6 +37,7 @@ asf <- readASF(asfFilePath)
 
 }
 \references{
-\url{http://giorasimchoni.com/}
-\url{http://mocap.cs.cmu.edu/}
+A blog post describing the package with more examples: \url{http://giorasimchoni.com/}
+
+The CMU Graphics Lab Motion Capture Database: \url{http://mocap.cs.cmu.edu/}
 }

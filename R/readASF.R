@@ -21,8 +21,9 @@
 #' Only ASF/AMC files from the CMU Graphics Lab Motion Capture Database have been tested.
 #' 
 #' @references
-#' \url{http://giorasimchoni.com/}
-#' \url{http://mocap.cs.cmu.edu/}
+#' A blog post describing the package with more examples: \url{http://giorasimchoni.com/}
+#' 
+#' The CMU Graphics Lab Motion Capture Database: \url{http://mocap.cs.cmu.edu/}
 #' 
 #' @examples
 #' asfFilePath <- system.file("extdata", "lambada.asf", package = "mocap")

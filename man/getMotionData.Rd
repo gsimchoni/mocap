@@ -11,7 +11,8 @@ getMotionData(asf, amc, verbose = FALSE)
 
 \item{amc}{AMC object read with \code{readAMC()}}
 
-\item{verbose}{a boolean indicating whether or not to print no. of frames read, defaults to TRUE}
+\item{verbose}{a boolean indicating whether or not to print no. of frames read,
+defaults to TRUE}
 }
 \value{
 \item{xyz}{a named list of 3D motion data matrices, one for each bone, see Details.}
@@ -21,10 +22,10 @@ This function will turn your \code{asf} and \code{amc} objects into a list of
 3D motion matrices, one for each bone.
 }
 \details{
-This function accepts a pair of \code{asf} and \code{amc} objects, loops
-through bones and frames to return the \code{xyz} list. Each element of this
-list represents the 3D (global) coordinates of motion for each bone. Thus
-each element of the list is a dimensions nFrames x 3
+This function accepts a pair of \code{asf} and \code{amc} objects, for each
+frame traverses the skeleton in a Depth First Search form to return the \code{xyz}
+list. Each element of this list represents the 3D (global) coordinates of
+motion for each bone. Thus each element of the list is of dimensions nFrames x 3
 }
 \examples{
 asfFilePath <- system.file("extdata", "lambada.asf", package = "mocap")
@@ -35,6 +36,7 @@ xyz <- getMotionData(asf, amc)
 
 }
 \references{
-\url{http://giorasimchoni.com/}
-\url{http://mocap.cs.cmu.edu/}
+A blog post describing the package with more examples: \url{http://giorasimchoni.com/}
+
+The CMU Graphics Lab Motion Capture Database: \url{http://mocap.cs.cmu.edu/}
 }

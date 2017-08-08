@@ -4,9 +4,11 @@
 \alias{makeMotionMovie}
 \title{Make a movie out of motion data}
 \usage{
-makeMotionMovie(asf, amc, xyz, type = "gif", framesPerSecond = 120,
-  skipNFrames = 1, fileName = paste0("motion.", type), imgName = "motion",
-  rotateMotion = FALSE, viewAngle = 40, ...)
+makeMotionMovie(asf, amc, xyz, movieType = "gif", framesPerSecond = 120,
+  skipNFrames = 1, fileName = "motion", imgName = "motion",
+  rotateMotion = FALSE, viewAngle = 40, nSkeletons = 1,
+  sdExtraSkeleton = 80, twoSkeletons = FALSE, amc2 = NULL, xyz2 = NULL,
+  ...)
 }
 \arguments{
 \item{asf}{ASF object read with \code{readASF()}}
@@ -15,11 +17,13 @@ makeMotionMovie(asf, amc, xyz, type = "gif", framesPerSecond = 120,
 
 \item{xyz}{the \code{xyz} list object obtained with \code{getMotionData()}}
 
-\item{type}{type of video, "gif" or "mp4", defaults to "gif"}
+\item{movieType}{type of video, "gif" or "mp4", defaults to "gif"}
 
 \item{framesPerSecond}{no. of frames per second, defaults to 120}
 
-\item{skipNFrames}{size of frames step to skip, defaults to 1, i.e. no skipping}
+\item{skipNFrames}{size of frames step to skip, defaults to 1, i.e. no skipping.
+This parameter is useful when there are many frames and the gif can fail simply
+because the command is too long, e.g. in the "lambada" example, we input 4 here}
 
 \item{fileName}{name for the output file, defaults to "motion"}
 
@@ -31,24 +35,41 @@ motion, defaults to FALSE}
 
 \item{viewAngle}{the \code{scatterplot3d}'s \code{angle} parameter, defaults to 40}
 
+\item{nSkeletons}{number of skeletons to animate from this motion, defaults to 1,
+ignored if \code{twoSkeletons} is TRUE}
+
+\item{sdExtraSkeleton}{standard deviation of the position of other skeletons,
+in case nSkeletons > 1, defaults to 80 (centimeters)}
+
+\item{twoSkeletons}{a boolean indicating whether a pair of skeletons are
+entered into the function, defaults to TRUE. If FALSE one must specify \code{amc2}
+and \code{xyz2}}
+
+\item{amc2}{AMC object of the 2nd skeleton, if \code{twoSkeletons} is TRUE}
+
+\item{xyz2}{\code{xyz} list object of the 2nd skeleton, if \code{twoSkeletons}
+is TRUE}
+
 \item{...}{additional arguments to the \code{scatterplot3d} function}
 }
 \description{
 Use the \code{animation} and \code{scatterplot3d} packages to output a gif
 or a mp4 movie out of the motion data extracted from the AFS/AMC files. For
 gifs need to install ImageMagick, for mp4s need ffmpeg, see the \code{animation}
-package for details.
+package for details. Note this function will create a new gif/mp4 file in your
+working directory.
 }
 \examples{
 asfFilePath <- system.file("extdata", "lambada.asf", package = "mocap")
 asf <- readASF(asfFilePath)
 amcFilePath <- system.file("extdata", "lambada.amc", package = "mocap")
 amc <- readAMC(amcFilePath, asf)
-xyz <- getXYZLocationData(asf, amc)
+xyz <- getMotionData(asf, amc)
 makeMotionMovie(asf, amc, xyz, skipNFrames = 4)
 
 }
 \references{
-\url{http://giorasimchoni.com/}
-\url{http://mocap.cs.cmu.edu/}
+A blog post describing the package with more examples: \url{http://giorasimchoni.com/}
+
+The CMU Graphics Lab Motion Capture Database: \url{http://mocap.cs.cmu.edu/}
 }

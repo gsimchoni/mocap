@@ -40,6 +40,19 @@ Make a GIF out of it (if you have the `scatterplot3d` and `animation` packages i
 makeMotionMovie(asf, amc, xyz, skipNFrames = 4)
 ```
 
-![Lambada!](motion.gif)
+![Lambada!](lambada.gif)
+
+Animate a few skeletons from a single one:
+
+``` r
+asfFilePath <- system.file("extdata", "zombie.asf", package = "mocap")
+asf <- readASF(asfFilePath)
+amcFilePath <- system.file("extdata", "zombie.amc", package = "mocap")
+amc <- readAMC(amcFilePath, asf)
+xyz <- getMotionData(asf, amc)
+makeMotionMovie(asf, amc, xyz, skipNFrames = 3, nSkeletons = 10, sdExtraSkeleton = 100)
+```
+
+![Zombies!](zombies.gif)
 
 More information and examples [here](http://giorasimchoni.com).
