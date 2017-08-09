@@ -77,4 +77,10 @@ makeMotionMovie(asf, amc1, xyz1, skipNFrames = 2,
 
 ![Charleston!](charleston.gif)
 
-More information and examples [here](http://giorasimchoni.com).
+More information and examples [here](http://giorasimchoni.com/2017/08/08/2017-08-08-lambada-the-mocap-package/).
+
+Credit goes to:
+
+* [Vanush Vaswani](https://twitter.com/VanushVaswani) for [this](https://github.com/VanushVaswani/amcparser) excellent Python code
+
+* [Jernej Barbic](http://www-bcf.usc.edu/~jbarbic/) for [this](http://graphics.cs.cmu.edu/software/amc_to_matrix.m) Matlab code for converting the AMC file into a matrix

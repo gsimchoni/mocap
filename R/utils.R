@@ -38,6 +38,8 @@ readBone <- function(idx, lines) {
 
 # function to convert amc file to matrix
 # TODO Avoid these magic numbers, they probably only apply to CMU files
+# CREDIT: [Jernej Barbic](http://www-bcf.usc.edu/~jbarbic/)
+# http://graphics.cs.cmu.edu/software/amc_to_matrix.m
 amc2Matrix <- function(fname, verbose = FALSE) {
   lines <- readLines(fname)
   
