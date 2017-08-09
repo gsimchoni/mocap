@@ -38,7 +38,7 @@ amc <- readAMC(amcFilePath, asf)
 
 }
 \references{
-A blog post describing the package with more examples: \url{http://giorasimchoni.com/}
+A blog post describing the package with more examples: \url{http://giorasimchoni.com/2017/08/08/2017-08-08-lambada-the-mocap-package/}
 
 The CMU Graphics Lab Motion Capture Database: \url{http://mocap.cs.cmu.edu/}
 }

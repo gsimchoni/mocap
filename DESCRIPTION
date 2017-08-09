@@ -6,7 +6,7 @@ Authors@R: person("Giora", "Simchoni", email = "gsimchoni@gmail.com", role = c("
 Description: This package holds functions to easily parse motion capture ("mocap") files.
 	Currently only ASF/AMC files are supported, and only those found in the
 	Carnegie Mellon University Graphics Lab Motion Capture Database have been tested
-URL: http://github.com/gsimchoni/mocap, http://giorasimchoni.com, http://mocap.cs.cmu.edu/
+URL: http://giorasimchoni.com/2017/08/08/2017-08-08-lambada-the-mocap-package/, http://mocap.cs.cmu.edu/
 Depends: R (>= 3.3.3)
 License: GPL-3
 Encoding: UTF-8
