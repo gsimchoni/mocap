@@ -53,7 +53,7 @@ plotMotionSingleFrame <- function(xyzList, childs, frame, lims,
     }
     if (i == 1) {
       s3d <- scatterplot3d::scatterplot3d(pos,
-                                          xlim = lims$limX, ylim = lims$limZ,
+                                          xlim = lims$limX, ylim = -lims$limZ,
                                           zlim = lims$limY,
                                           box = FALSE, main = mainTitle, type = "n",
                                           angle = viewAngle, ...)
